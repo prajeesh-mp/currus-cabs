@@ -14,7 +14,6 @@ export default function RideSelector() {
                     }`}
                     onClick={() => setActiveTab('drop-off')}
                 >
-                    {/* <span className="w-5 h-5 bg-gray-100 rounded flex justify-center items-center">🚗 Replace with an icon</span> */}
                     <span>Drop Off</span>
                 </button>
                 <button
@@ -23,7 +22,6 @@ export default function RideSelector() {
                     }`}
                     onClick={() => setActiveTab('round-trip')}
                 >
-                    {/* <span className="w-5 h-5 bg-gray-100 rounded flex justify-center items-center">📦 Replace with an icon</span> */}
                     <span>Round Trip</span>
                 </button>
                 <button
@@ -32,15 +30,12 @@ export default function RideSelector() {
                     }`}
                     onClick={() => setActiveTab('package')}
                 >
-                    {/* <span className="w-5 h-5 bg-gray-100 rounded flex justify-center items-center">📦 Replace with an icon</span> */}
                     <span>Package</span>
                 </button>
             </div>
 
-            {/* Ride Details */}
             {activeTab === 'drop-off' && (
                 <div>
-                    {/* From Input */}
                     <div className="flex items-center space-x-3 mb-4">
                         <span className="w-3 h-3 bg-black rounded-full"></span>
                         <div className="flex-1 bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center">
@@ -49,7 +44,6 @@ export default function RideSelector() {
                         </div>
                     </div>
 
-                    {/* To Input */}
                     <div className="flex items-center space-x-3 mb-4">
                         <span className="w-3 h-3 bg-black rounded-sm"></span>
                         <div className="flex-1 bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center">
@@ -63,49 +57,45 @@ export default function RideSelector() {
                         <div className="flex justify-between">
                             <button
                                 onClick={() => setSelectedVehicle('suv')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'suv'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚙 SUV
+                                <img src="/suv.png" className="w-8 h-8 me-2" /> SUV
                             </button>
-
-                            {/* Sedan Option */}
                             <button
                                 onClick={() => setSelectedVehicle('sedan')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'sedan'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚗 Sedan
+                                <img src="/sedan.png" className="w-8 h-8 me-2" /> Sedan
                             </button>
 
-                            {/* Hatchback Option */}
                             <button
                                 onClick={() => setSelectedVehicle('hatchback')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'hatchback'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚕 Hatchback
+                                <img src="/hatchback.png" className="w-8 h-8 me-2" /> Hatchback
                             </button>
                         </div>
                     </div>
 
-                    {/* Date and Time */}
                     <div className="flex space-x-4 mb-6">
                         <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded-md flex-1">
-                            <span>📅</span> {/* Replace with an icon */}
+                            <span>📅</span>
                             <span className="text-sm">Today</span>
                         </button>
                         <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded-md flex-1">
-                            <span>⏰</span> {/* Replace with an icon */}
+                            <span>⏰</span>
                             <span className="text-sm">Now</span>
                             <span>▼</span>
                         </button>
@@ -141,37 +131,34 @@ export default function RideSelector() {
                         <div className="flex justify-between">
                             <button
                                 onClick={() => setSelectedVehicle('suv')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'suv'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚙 SUV
+                                <img src="/suv.png" className="w-8 h-8 me-2" /> SUV
                             </button>
-
-                            {/* Sedan Option */}
                             <button
                                 onClick={() => setSelectedVehicle('sedan')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'sedan'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚗 Sedan
+                                <img src="/sedan.png" className="w-8 h-8 me-2" /> Sedan
                             </button>
 
-                            {/* Hatchback Option */}
                             <button
                                 onClick={() => setSelectedVehicle('hatchback')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'hatchback'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚕 Hatchback
+                                <img src="/hatchback.png" className="w-8 h-8 me-2" /> Hatchback
                             </button>
                         </div>
                     </div>
@@ -228,37 +215,34 @@ export default function RideSelector() {
                         <div className="flex justify-between">
                             <button
                                 onClick={() => setSelectedVehicle('suv')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'suv'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚙 SUV
+                                <img src="/suv.png" className="w-8 h-8 me-2" /> SUV
                             </button>
-
-                            {/* Sedan Option */}
                             <button
                                 onClick={() => setSelectedVehicle('sedan')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'sedan'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚗 Sedan
+                                <img src="/sedan.png" className="w-8 h-8 me-2" /> Sedan
                             </button>
 
-                            {/* Hatchback Option */}
                             <button
                                 onClick={() => setSelectedVehicle('hatchback')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border ${
+                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
                                     selectedVehicle === 'hatchback'
                                         ? 'bg-black text-white border-black'
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                🚕 Hatchback
+                                <img src="/hatchback.png" className="w-8 h-8 me-2" /> Hatchback
                             </button>
                         </div>
                     </div>
