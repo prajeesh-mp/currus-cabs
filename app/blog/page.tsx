@@ -31,6 +31,30 @@ export default function Blog() {
                             </p>
                         </div>
                     </div>
+
+                    <div className="relative bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://via.placeholder.com/400x200" alt="Blog 2" className="w-full h-52 object-cover" />
+                        <div className="p-6">
+                            <p className="text-sm text-gray-500">Phoenix Baker • 19 Jan 2022</p>
+                            <h3 className="text-lg font-semibold text-gray-900 mt-2 mb-2">Best books on scaling your startup</h3>
+                            <p className="text-sm text-gray-500">
+                                This collection of the best startup books for scaling your startup is packed full of valuable insights and
+                                advice.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="relative bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://via.placeholder.com/400x200" alt="Blog 2" className="w-full h-52 object-cover" />
+                        <div className="p-6">
+                            <p className="text-sm text-gray-500">Phoenix Baker • 19 Jan 2022</p>
+                            <h3 className="text-lg font-semibold text-gray-900 mt-2 mb-2">Best books on scaling your startup</h3>
+                            <p className="text-sm text-gray-500">
+                                This collection of the best startup books for scaling your startup is packed full of valuable insights and
+                                advice.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
