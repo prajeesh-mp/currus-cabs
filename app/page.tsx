@@ -1,8 +1,6 @@
 import RideSelector from './components/RideSelector';
-// import MapWithRoute from '@/app/components/Map';
 import Image from 'next/image';
 import Testimonials from './components/Testimonials';
-import Footer from './components/Footer';
 
 export default function Home() {
     return (

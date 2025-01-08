@@ -9,14 +9,14 @@ const Contact = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const onSubmit = () => {
+        // console.log(data);
     };
 
     return (
         <div className="flex flex-col items-center px-4 py-8 sm:px-8 lg:px-16">
             <h1 className="text-3xl font-bold text-center">Get in touch</h1>
-            <p className="text-center text-gray-600 mt-2 mb-8">Need a ride? Let's chat about how we can help.</p>
+            <p className="text-center text-gray-600 mt-2 mb-8">Need a ride? Let&apos;s chat about how we can help.</p>
 
             {/* Action Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-8">
@@ -35,7 +35,7 @@ const Contact = () => {
             {/* Contact Form */}
             <form className="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md" onSubmit={handleSubmit(onSubmit)}>
                 <h2 className="text-xl font-semibold mb-4">Message us</h2>
-                <p className="text-gray-500 mb-6">We'll get back to you within 24 hours.</p>
+                <p className="text-gray-500 mb-6">We&apos;ll get back to you within 24 hours.</p>
 
                 <div className="mb-4">
                     <label className="block text-gray-700" htmlFor="firstName">

@@ -59,7 +59,7 @@ export default function Testimonials() {
                             <div className="ml-4">
                                 <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
 
-                                <div className="flex items-center">{Array.from({ length: testimonial.rating }).map((_, i) => `⭐`)}</div>
+                                <div className="flex items-center">{Array.from({ length: testimonial.rating }).map(() => `⭐`)}</div>
                             </div>
                         </div>
                         <p className="text-gray-700 text-sm">{testimonial.message}</p>
