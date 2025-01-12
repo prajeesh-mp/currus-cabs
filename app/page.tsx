@@ -1,6 +1,6 @@
 import RideSelector from './components/RideSelector';
-import Image from 'next/image';
 import Testimonials from './components/Testimonials';
+import MapWithRoute from './components/Map';
 
 export default function Home() {
     return (
@@ -13,10 +13,9 @@ export default function Home() {
                 </div>
 
                 <div className="relative w-full md:w-1/2 h-[300px] md:ms-10 md:h-[400px] bg-gray-100 rounded-lg overflow-hidden">
-                    {/* Map Placeholder */}
                     <div className="absolute inset-0 bg-blue-50">
-                        {/* <MapWithRoute /> */}
-                        <Image src="/routes.png" width={1000} height={600} alt="Route" />
+                        <MapWithRoute />
+                        {/* <Image src="/routes.png" width={1000} height={600} alt="Route" /> */}
                         {/* <div className="absolute top-8 left-6 md:top-20 md:left-10 bg-white shadow-md rounded-lg p-4">
                             <div className="flex items-center space-x-4">
                                 <div className="w-10 h-10 bg-gray-300 rounded-full"></div>

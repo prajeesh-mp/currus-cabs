@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function RideSelector() {
@@ -63,7 +64,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/suv.png" className="w-8 h-8 me-2" /> SUV
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/suv.png" className="w-8 h-8  md:mb-0 md:mr-2" alt="SUV" />
+                                    <span className="text-center md:text-left">SUV</span>
+                                </div>
                             </button>
                             <button
                                 onClick={() => setSelectedVehicle('sedan')}
@@ -73,7 +77,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/sedan.png" className="w-8 h-8 me-2" /> Sedan
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/sedan.png" className="w-8 h-8 me-2" alt="Sedan" />
+                                    <span className="text-center md:text-left">Sedan</span>
+                                </div>
                             </button>
 
                             <button
@@ -84,7 +91,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/hatchback.png" className="w-8 h-8 me-2" /> Hatchback
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/hatchback.png" className="w-8 h-8 me-2" alt="Sedan" />
+                                    <span className="text-center md:text-left">Hatchback</span>
+                                </div>
                             </button>
                         </div>
                     </div>
@@ -137,7 +147,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/suv.png" className="w-8 h-8 me-2" /> SUV
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/suv.png" className="w-8 h-8  md:mb-0 md:mr-2" alt="SUV" />
+                                    <span className="text-center md:text-left">SUV</span>
+                                </div>
                             </button>
                             <button
                                 onClick={() => setSelectedVehicle('sedan')}
@@ -147,7 +160,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/sedan.png" className="w-8 h-8 me-2" /> Sedan
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/sedan.png" className="w-8 h-8 me-2" alt="Sedan" />
+                                    <span className="text-center md:text-left">Sedan</span>
+                                </div>
                             </button>
 
                             <button
@@ -158,7 +174,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/hatchback.png" className="w-8 h-8 me-2" /> Hatchback
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/hatchback.png" className="w-8 h-8 me-2" alt="Sedan" />
+                                    <span className="text-center md:text-left">Hatchback</span>
+                                </div>
                             </button>
                         </div>
                     </div>
@@ -221,7 +240,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/suv.png" className="w-8 h-8 me-2" /> SUV
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/suv.png" className="w-8 h-8  md:mb-0 md:mr-2" alt="SUV" />
+                                    <span className="text-center md:text-left">SUV</span>
+                                </div>
                             </button>
                             <button
                                 onClick={() => setSelectedVehicle('sedan')}
@@ -231,7 +253,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/sedan.png" className="w-8 h-8 me-2" /> Sedan
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/sedan.png" className="w-8 h-8 me-2" alt="Sedan" />
+                                    <span className="text-center md:text-left">Sedan</span>
+                                </div>
                             </button>
 
                             <button
@@ -242,7 +267,10 @@ export default function RideSelector() {
                                         : 'bg-gray-100 text-gray-500 border-gray-300'
                                 }`}
                             >
-                                <img src="/hatchback.png" className="w-8 h-8 me-2" /> Hatchback
+                                <div className="flex flex-col md:flex-row items-center">
+                                    <Image width={64} height={64} src="/hatchback.png" className="w-8 h-8 me-2" alt="Sedan" />
+                                    <span className="text-center md:text-left">Hatchback</span>
+                                </div>
                             </button>
                         </div>
                     </div>

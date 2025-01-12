@@ -39,7 +39,7 @@ const MapWithRoute: React.FC = () => {
     // }, []);
 
     return (
-        <LoadScript googleMapsApiKey="AIzaSyDrBctR4cVrI6srdCwQ2oAwLMa9NvDfyt0">
+        <LoadScript googleMapsApiKey="AIzaSyB61L4am51qSd55nPMrHA6VLzujwsIApVc">
             <GoogleMap
                 mapContainerStyle={mapStyles}
                 center={defaultCenter}

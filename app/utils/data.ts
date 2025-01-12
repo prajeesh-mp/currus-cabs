@@ -1,0 +1,16 @@
+export const districts = [
+    { name: 'Kasaragod' },
+    { name: 'Kannur' },
+    { name: 'Wayanad' },
+    { name: 'Kozhikode' },
+    { name: 'Malappuram' },
+    { name: 'Palakkad' },
+    { name: 'Thrissur' },
+    { name: 'Ernakulam' },
+    { name: 'Alappuzha' },
+    { name: 'Kottayam' },
+    { name: 'Idukki' },
+    { name: 'Pathanamthitta' },
+    { name: 'Kollam' },
+    { name: 'Thiruvananthapuram' },
+];
