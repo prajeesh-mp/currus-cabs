@@ -1,16 +1,49 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const Contact = () => {
+    const [loading, setLoading] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm();
 
-    const onSubmit = () => {
-        // console.log(data);
+    const onSubmit = async (data) => {
+        try {
+            setLoading(true);
+            setError('');
+            setSubmitted(false);
+
+            const response = await fetch('/api/enquiry', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            setLoading(false);
+
+            if (result.status === 'success') {
+                reset();
+                setSubmitted(true);
+                return;
+            }
+
+            setError('Sorry, Something went wrong');
+        } catch (error) {
+            setLoading(false);
+            console.log(error);
+            setError('Sorry, Something went wrong');
+        }
     };
 
     return (
@@ -100,8 +133,34 @@ const Contact = () => {
                     {errors.message && <p className="text-sm text-red-600">Message is required</p>}
                 </div>
 
-                <button type="submit" className="w-full bg-black text-white py-3 rounded-md font-semibold">
-                    Send message
+                {submitted && (
+                    <div className="text-center text-green-600 mb-2">Thanks for the enquiry. We&apos;ll get back to you soon!</div>
+                )}
+                {error && <div className="text-center text-red-400 mb-2">{error}</div>}
+
+                <button
+                    type="submit"
+                    className={`w-full py-3 rounded-md font-semibold ${
+                        loading ? 'bg-gray-400 text-gray-600 cursor-not-allowed' : 'bg-black text-white'
+                    }`}
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <div className="flex justify-center items-center space-x-2">
+                            <svg
+                                className="animate-spin h-5 w-5 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                            </svg>
+                            <span>Loading...</span>
+                        </div>
+                    ) : (
+                        'Send Message'
+                    )}
                 </button>
             </form>
         </div>

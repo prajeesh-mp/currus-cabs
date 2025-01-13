@@ -1,4 +1,4 @@
-export function handleFileSelection(file: File, callback: (base64: string) => void) {
+export function handleFileSelection(file: File, callback: (base64WithType: string) => void) {
     const MAX_SIZE = 500 * 1024; // 500KB in bytes
 
     if (!file) {
@@ -14,9 +14,18 @@ export function handleFileSelection(file: File, callback: (base64: string) => vo
     const reader = new FileReader();
 
     reader.onload = () => {
-        // @ts-expect-error base64 conversion
-        const base64String = reader?.result?.split(',')[1];
-        callback(base64String);
+        if (reader.result) {
+            // Extract MIME type from the file
+            const mimeType = file.type;
+
+            // Create the base64 string with MIME type
+            const base64String = reader.result.toString().split(',')[1];
+            const base64WithType = `data:${mimeType};base64,${base64String}`;
+
+            callback(base64WithType);
+        } else {
+            console.error('Error: Reader result is null');
+        }
     };
 
     reader.onerror = () => {

@@ -10,6 +10,10 @@ export default function DriverRegistration() {
     const [rcPhoto, setRcPhoto] = useState('');
     const [permitPhoto, setPermitPhoto] = useState('');
 
+    const [loading, setLoading] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
     const {
         register,
         handleSubmit,
@@ -17,11 +21,44 @@ export default function DriverRegistration() {
         reset,
     } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
-        console.log(vehiclePhoto, driverPhoto, rcPhoto, permitPhoto);
+    const onSubmit = async (data) => {
+        try {
+            setLoading(true);
+            setError('');
+            setSubmitted(false);
 
-        reset();
+            const driverData = {
+                ...data,
+                driverPhoto,
+                vehiclePhoto,
+                rc: rcPhoto,
+                permit: permitPhoto,
+            };
+
+            const response = await fetch('/api/driver', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(driverData),
+            });
+
+            const result = await response.json();
+
+            setLoading(false);
+
+            if (result.status === 'success') {
+                reset();
+                setSubmitted(true);
+                return;
+            }
+
+            setError('Sorry, Something went wrong');
+        } catch (error) {
+            setLoading(false);
+            console.log(error);
+            setError('Sorry, Something went wrong');
+        }
     };
 
     return (
@@ -110,13 +147,13 @@ export default function DriverRegistration() {
                     <span className="w-3 h-3 bg-black rounded-sm"></span>
                     <div className="flex-1 bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center">
                         <input
-                            {...register('registrationNumber', { required: 'Vehicle Registration Number is required' })}
+                            {...register('registration', { required: 'Vehicle Registration Number is required' })}
                             type="text"
                             className="bg-transparent outline-none text-sm flex-grow"
                             placeholder="Registration Number"
                         />
                     </div>
-                    {errors.registrationNumber && <p className="text-sm text-red-600">Registration Number is required</p>}
+                    {errors.registration && <p className="text-sm text-red-600">Registration Number is required</p>}
                 </div>
 
                 <div className="mb-4">
@@ -207,8 +244,34 @@ export default function DriverRegistration() {
                     {errors.permit && <p className="text-sm text-red-600">Permit is required</p>}
                 </div>
 
-                <button type="submit" className="w-full bg-black text-white py-3 rounded-md font-semibold">
-                    Submit
+                {submitted && (
+                    <div className="text-center text-green-600 mb-2">Registration completed. We&apos;ll get back to you soon!</div>
+                )}
+                {error && <div className="text-center text-red-400 mb-2">{error}</div>}
+
+                <button
+                    type="submit"
+                    className={`w-full py-3 rounded-md font-semibold ${
+                        loading ? 'bg-gray-400 text-gray-600 cursor-not-allowed' : 'bg-black text-white'
+                    }`}
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <div className="flex justify-center items-center space-x-2">
+                            <svg
+                                className="animate-spin h-5 w-5 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                            </svg>
+                            <span>Loading...</span>
+                        </div>
+                    ) : (
+                        'Register now'
+                    )}
                 </button>
             </form>
         </div>
