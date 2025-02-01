@@ -1,9 +1,9 @@
 'use client';
-import React, { useCallback, useRef, useState } from 'react';
-import { GoogleMap, LoadScript, DirectionsRenderer } from '@react-google-maps/api';
+import React, { useRef } from 'react';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const MapWithRoute: React.FC = () => {
-    const [directionsResponse, setDirectionsResponse] = useState<google.maps.DirectionsResult | null>(null);
+    // const [directionsResponse, setDirectionsResponse] = useState<google.maps.DirectionsResult | null>(null);
     const mapRef = useRef<google.maps.Map | null>(null);
 
     const mapStyles = {

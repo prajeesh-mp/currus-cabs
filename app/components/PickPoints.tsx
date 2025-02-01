@@ -35,7 +35,7 @@ export default function PickPoints({
             setError("Sorry, We don't have service in " + placeName);
 
             console.log('failed', result);
-        } catch (error: any) {
+        } catch (error) {
             console.log(error, 'area');
         }
     };

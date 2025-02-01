@@ -14,11 +14,12 @@ export default function RideSelector() {
     const [noOfDays, setNoOfDays] = useState('');
     const [distance, setDistance] = useState('0 km');
     const [taxiFare, setTaxiFare] = useState(0);
+    const [bookingFare, setBookingFare] = useState(0);
     const [pickup, setPickup] = useState<google.maps.LatLng | null>(null);
     const [dropoff, setDropoff] = useState<google.maps.LatLng | null>(null);
     const [area, setArea] = useState<Area | null>(null);
-    const [price, setPrice] = useState<any>(null);
-    const [error, setError] = useState('');
+    const [price, setPrice] = useState(null);
+    // const [error, setError] = useState('');
 
     const calculateDistance = (area: Area, pickup: google.maps.LatLng, dropoff: google.maps.LatLng) => {
         if (!pickup || !dropoff || !area) return;
@@ -62,33 +63,44 @@ export default function RideSelector() {
         setPrice(pricing);
 
         let totalFare = 0;
+        let totalPurchaseFare = 0;
 
         const { baseSellingRate, distanceSellingRate, basePurchaseRate, distancePurchaseRate } = pricing;
 
         // Single-side trip calculation (dropoff or one-way in round trip)
         const calculateBaseFare = (tripDistance: number) => {
             let fare = baseSellingRate;
+            let purchaseFare = basePurchaseRate;
             if (tripDistance > pricing.distance) {
-                fare = fare + (tripDistance - pricing.distance) * distanceSellingRate;
+                fare += (tripDistance - pricing.distance) * distanceSellingRate;
+                purchaseFare += (tripDistance - pricing.distance) * distancePurchaseRate;
             }
 
-            return fare;
+            return {
+                fare,
+                purchaseFare,
+            };
         };
 
+        const _fare = calculateBaseFare(distance);
         // Drop-off (one-way)
         if (activeTab === 'drop-off') {
-            totalFare = calculateBaseFare(distance);
+            totalFare = _fare.fare;
+            totalPurchaseFare = _fare.purchaseFare;
         }
         // Round Trip (two-way)
         else if (activeTab === 'round-trip') {
-            totalFare = calculateBaseFare(distance) * 2;
+            totalFare = _fare.fare * 2;
+            totalPurchaseFare = _fare.purchaseFare * 2;
         }
         // Package Trip (multi-day)
         else if (activeTab === 'package') {
             totalFare = baseSellingRate * Number(noOfDays); // Assuming 8-hour 80 km package per day
+            totalPurchaseFare = basePurchaseRate * Number(noOfDays);
         }
 
         setTaxiFare(totalFare);
+        setBookingFare(totalFare - totalPurchaseFare);
 
         console.log(totalFare);
     };
@@ -233,7 +245,7 @@ export default function RideSelector() {
                         <span className="text-sm">
                             <DatePicker
                                 selected={startDate}
-                                onChange={(date: any) => {
+                                onChange={(date: Date) => {
                                     const today = new Date();
 
                                     console.log(date, today);
@@ -258,7 +270,7 @@ export default function RideSelector() {
                         <span className="text-sm">
                             <DatePicker
                                 selected={startDate}
-                                onChange={(date: any) => setStartDate(date)}
+                                onChange={(date: Date) => setStartDate(date)}
                                 showTimeSelect
                                 showTimeSelectOnly
                                 timeIntervals={15}
@@ -273,17 +285,26 @@ export default function RideSelector() {
                 </div>
 
                 {taxiFare > 0 && (
-                    <div className="bg-white shadow-md rounded-lg p-4 flex justify-around mb-4">
-                        <div>
-                            <p className="text-xs text-gray-500">Distance</p>
-                            <p className="text-lg md:text-xl font-bold">
-                                {activeTab === 'round-trip' ? Number(distance.split(' ')[0]) * 2 : Number(distance.split(' ')[0])} km
-                            </p>
+                    <div className="bg-white shadow-md rounded-lg p-4 mb-4">
+                        <div className="flex justify-around ">
+                            <div>
+                                <p className="text-xs text-gray-500">Distance</p>
+                                <p className="text-lg md:text-xl font-bold">
+                                    {activeTab === 'round-trip' ? Number(distance.split(' ')[0]) * 2 : Number(distance.split(' ')[0])} km
+                                </p>
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-500">Total Fare</p>
+                                <p className="text-lg md:text-xl font-bold">₹{taxiFare.toFixed(2)}</p>
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-500">Booking Fare</p>
+                                <p className="text-lg md:text-xl font-bold">₹{bookingFare.toFixed(2)}</p>
+                            </div>
                         </div>
-                        <div>
-                            <p className="text-xs text-gray-500">Fare</p>
-                            <p className="text-lg md:text-xl font-bold">₹{taxiFare.toFixed(2)}</p>
-                        </div>
+                        <p className="text-center mt-2 text-sm text-gray-500">
+                            Book now by paying ₹{bookingFare.toFixed(2)}, pay the rest later
+                        </p>
                     </div>
                 )}
 

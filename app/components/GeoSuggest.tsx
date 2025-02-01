@@ -1,5 +1,5 @@
 import { useLoadScript } from '@react-google-maps/api';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface GeoSuggestProps {
     placeholder?: string;
@@ -11,25 +11,17 @@ const libraries: Array<'drawing' | 'places' | 'geometry'> = ['drawing', 'places'
 
 const GeoSuggest: React.FC<GeoSuggestProps> = ({ placeholder, onPlaceSelected, apiKey }) => {
     const inputRef = useRef<HTMLInputElement>(null);
-    // const [isLoaded, setIsLoaded] = useState(false);
-    const [input, setInput] = useState({});
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: apiKey,
         libraries,
     });
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setInput((values) => ({ ...values, [name]: value }));
-    };
-
     const handlePlaceChanged = async (address) => {
         if (!isLoaded) return;
         const place = address.getPlace();
 
         if (!place || !place.geometry) {
-            setInput({});
             return;
         }
 
@@ -40,13 +32,8 @@ const GeoSuggest: React.FC<GeoSuggestProps> = ({ placeholder, onPlaceSelected, a
 
     useEffect(() => {
         if (!isLoaded || loadError) {
-            console.log(loadError);
-            console.log(isLoaded);
-
             return;
         }
-
-        console.log(isLoaded, 'isLoaded');
 
         const options = {
             componentRestrictions: { country: 'in' },
@@ -66,7 +53,7 @@ const GeoSuggest: React.FC<GeoSuggestProps> = ({ placeholder, onPlaceSelected, a
                 type="text"
                 placeholder={placeholder || 'Search location'}
                 className="bg-transparent outline-none text-sm flex-grow"
-                onChange={handleChange}
+                // onChange={handleChange}
             />
             <button className="text-gray-400">✕</button>
         </>

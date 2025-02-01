@@ -1,7 +1,7 @@
 import RideSelector from './components/RideSelector';
 import Testimonials from './components/Testimonials';
-import MapWithRoute from './components/Map';
-import Image from 'next/image';
+// import MapWithRoute from './components/Map';
+// import Image from 'next/image';
 
 export default function Home() {
     return (
