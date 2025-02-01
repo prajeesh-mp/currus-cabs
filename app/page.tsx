@@ -1,6 +1,7 @@
 import RideSelector from './components/RideSelector';
 import Testimonials from './components/Testimonials';
 import MapWithRoute from './components/Map';
+import Image from 'next/image';
 
 export default function Home() {
     return (
@@ -14,7 +15,7 @@ export default function Home() {
 
                 <div className="relative w-full md:w-1/2 h-[300px] md:ms-10 md:h-[400px] bg-gray-100 rounded-lg overflow-hidden">
                     <div className="absolute inset-0 bg-blue-50">
-                        <MapWithRoute />
+                        {/* <MapWithRoute /> */}
                         {/* <Image src="/routes.png" width={1000} height={600} alt="Route" /> */}
                         {/* <div className="absolute top-8 left-6 md:top-20 md:left-10 bg-white shadow-md rounded-lg p-4">
                             <div className="flex items-center space-x-4">
@@ -24,12 +25,12 @@ export default function Home() {
                                     <p className="text-xs text-gray-500">9-HQ-14</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white shadow-md rounded-lg p-4">
-                            <p className="text-xs text-gray-500">Estimated time</p>
-                            <p className="text-lg md:text-xl font-bold">10-15 min</p>
-                            <p className="text-sm text-gray-500">Noa Carmel’s home</p>
+                        {/* <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white shadow-md rounded-lg p-4">
+                            <p className="text-xs text-gray-500">Distance</p>
+                            <p className="text-lg md:text-xl font-bold">225 km</p>
+                            <p className="text-sm text-gray-500">Kozhikode, Kerala, India</p>
                             <p className="text-xs text-gray-400">7th sevenstreet</p>
                         </div> */}
                     </div>

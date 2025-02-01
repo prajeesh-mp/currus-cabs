@@ -1,9 +1,9 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { GoogleMap, LoadScript, DirectionsRenderer } from '@react-google-maps/api';
 
 const MapWithRoute: React.FC = () => {
-    const [directionsResponse] = useState<google.maps.DirectionsResult | null>(null);
+    const [directionsResponse, setDirectionsResponse] = useState<google.maps.DirectionsResult | null>(null);
     const mapRef = useRef<google.maps.Map | null>(null);
 
     const mapStyles = {
@@ -49,7 +49,7 @@ const MapWithRoute: React.FC = () => {
                     // fetchRoute();
                 }}
             >
-                {directionsResponse && <DirectionsRenderer directions={directionsResponse} />}
+                {/* {directionsResponse && <DirectionsRenderer directions={directionsResponse} />} */}
             </GoogleMap>
         </LoadScript>
     );
