@@ -24,7 +24,11 @@ export interface IBooking extends Document {
     distanceSellingRate: number;
     tripRate: number;
     tripBookingRate: number;
+    tripBookingDate: string;
+    transactionId?: string;
+    otp?: string;
     isPaid: boolean;
+    isVerified: boolean;
 }
 
 const bookingSchema = new mongoose.Schema(
@@ -33,13 +37,13 @@ const bookingSchema = new mongoose.Schema(
         phone: String,
         pickupPoint: {
             type: {
-                type: 'Point',
+                type: String,
                 coordinates: [],
             },
         },
         dropOffPoint: {
             type: {
-                type: 'Point',
+                type: String,
                 coordinates: [],
             },
         },
@@ -57,7 +61,11 @@ const bookingSchema = new mongoose.Schema(
         distanceSellingRate: Number,
         tripRate: Number,
         tripBookingRate: Number,
+        tripBookingDate: Date,
+        transactionId: String,
+        otp: String,
         isPaid: Boolean,
+        isVerified: Boolean,
     },
     { timestamps: true },
 );
