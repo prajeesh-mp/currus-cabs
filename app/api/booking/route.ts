@@ -14,7 +14,7 @@ async function generateUniqueTransactionId(vehicleType: string): Promise<string>
     const vehicleCode = vehicleTypeMap[vehicleType.toLowerCase()] || 'UNK';
 
     let transactionId: string;
-    let exists: any;
+    let exists: { _id: string };
 
     do {
         // Generate a random 5-digit number

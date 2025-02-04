@@ -8,7 +8,7 @@ export async function PUT(req: Request) {
         dbInstance.getConnection();
 
         const data = await req.json();
-        const booking = await Booking.findOne({ phone: data.phone, transactionId: data.transactionId });
+        const booking = await Booking.findOne({ phone: data.phone, otp: data.otp, transactionId: data.transactionId });
 
         if (!booking) {
             return Response.json(

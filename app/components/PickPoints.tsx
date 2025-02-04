@@ -73,11 +73,7 @@ export default function PickPoints({
                 <span className="w-3 h-3 bg-black rounded-full"></span>
                 <div className="flex-1 bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center">
                     {/* <input type="text" className="bg-transparent outline-none text-sm flex-grow" placeholder="Pickup location" /> */}
-                    <GeoSuggest
-                        placeholder="Pickup location"
-                        onPlaceSelected={handlePickupSelected}
-                        apiKey={'AIzaSyB61L4am51qSd55nPMrHA6VLzujwsIApVc'}
-                    />
+                    <GeoSuggest placeholder="Pickup location" onPlaceSelected={handlePickupSelected} />
                 </div>
             </div>
 
@@ -85,11 +81,7 @@ export default function PickPoints({
                 <span className="w-3 h-3 bg-black rounded-sm"></span>
                 <div className="flex-1 bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center">
                     {/* <input type="text" className="bg-transparent outline-none text-sm flex-grow" placeholder="Dropoff location" /> */}
-                    <GeoSuggest
-                        placeholder="Dropoff location"
-                        onPlaceSelected={handleDropoffSelected}
-                        apiKey={'AIzaSyB61L4am51qSd55nPMrHA6VLzujwsIApVc'}
-                    />
+                    <GeoSuggest placeholder="Dropoff location" onPlaceSelected={handleDropoffSelected} />
                 </div>
             </div>
             <div className="text-red-400 text-sm text-center font-semibold">{error}</div>
