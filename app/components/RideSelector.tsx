@@ -18,7 +18,7 @@ export default function RideSelector({
 
     const [activeTab, setActiveTab] = useState('drop-off');
     const [selectedVehicle, setSelectedVehicle] = useState('SUV');
-    const [selectedRateType, setSelectedRateType] = useState(4);
+    const [selectedRateType, setSelectedRateType] = useState(8);
     const [startDate, setStartDate] = useState(new Date());
     const [noOfDays, setNoOfDays] = useState('');
     const [distance, setDistance] = useState('0 km');
@@ -98,14 +98,16 @@ export default function RideSelector({
             };
         };
 
-        const _fare = calculateBaseFare(distance);
         // Drop-off (one-way)
         if (activeTab === 'drop-off') {
-            totalFare = _fare.fare;
-            totalPurchaseFare = _fare.purchaseFare;
+            totalFare = distance * distanceSellingRate;
+            totalPurchaseFare = distance * distancePurchaseRate;
+            // totalFare = _fare.fare;
+            // totalPurchaseFare = _fare.purchaseFare;
         }
         // Round Trip (two-way)
         else if (activeTab === 'round-trip') {
+            const _fare = calculateBaseFare(distance);
             totalFare = _fare.fare * 2;
             totalPurchaseFare = _fare.purchaseFare * 2;
         }
@@ -336,10 +338,9 @@ export default function RideSelector({
                         </div>
                     </div>
 
-                    <div className="mb-6">
-                        {/* <h3 className="text-sm font-semibold text-gray-700 mb-2">Select Vehicle:</h3> */}
-                        <div className="flex justify-between">
-                            {activeTab !== 'package' && (
+                    {activeTab === 'round-trip' && (
+                        <div className="mb-6">
+                            <div className="flex justify-between">
                                 <button
                                     onClick={() => setSelectedRateType(4)}
                                     className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
@@ -352,26 +353,26 @@ export default function RideSelector({
                                         <span className="text-center md:text-left">4 Hour / 40 Kilometers</span>
                                     </div>
                                 </button>
+                                <button
+                                    onClick={() => setSelectedRateType(8)}
+                                    className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
+                                        selectedRateType === 8
+                                            ? 'bg-black text-white border-black'
+                                            : 'bg-gray-100 text-gray-500 border-gray-300'
+                                    }`}
+                                >
+                                    <div className="flex flex-col md:flex-row items-center">
+                                        <span className="text-center md:text-left">8 Hour / 80 Kilometers</span>
+                                    </div>
+                                </button>
+                            </div>
+                            {taxiFare > 0 && (
+                                <span className="text-gray-400 mt-2 text-sm">
+                                    Extra KM will be calculated at the rate of Rs.{price.distanceSellingRate}/KM
+                                </span>
                             )}
-                            <button
-                                onClick={() => setSelectedRateType(8)}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
-                                    selectedRateType === 8
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-gray-100 text-gray-500 border-gray-300'
-                                }`}
-                            >
-                                <div className="flex flex-col md:flex-row items-center">
-                                    <span className="text-center md:text-left">8 Hour / 80 Kilometers</span>
-                                </div>
-                            </button>
                         </div>
-                        {taxiFare > 0 && (
-                            <span className="text-gray-400 mt-2 text-sm">
-                                Extra KM will be calculated at the rate of Rs.{price.distanceSellingRate}/KM
-                            </span>
-                        )}
-                    </div>
+                    )}
 
                     <div className="flex space-x-4 mb-6">
                         <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded-md flex-1">
