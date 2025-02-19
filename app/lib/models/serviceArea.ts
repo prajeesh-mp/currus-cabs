@@ -6,9 +6,10 @@ export interface Area extends Document {
     type: string;
     path: { lat: number; lng: number }[];
     pricing: {
+        id: string;
         time: number;
         distance: number;
-        vehicleType: 'SUV' | 'Sedan' | 'Hatchback';
+        vehicleType: string;
         basePurchaseRate: number;
         baseSellingRate: number;
         hourlyPurchaseRate: number;
@@ -27,6 +28,7 @@ const serviceAreaSchema = new mongoose.Schema(
         pricing: {
             type: [
                 {
+                    id: String,
                     time: Number,
                     distance: Number,
                     vehicleType: String,

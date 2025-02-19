@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import PickPoints from './PickPoints';
 import DatePicker from 'react-datepicker';
@@ -8,6 +7,7 @@ import { Area } from '../lib/models/serviceArea';
 import { motion } from 'framer-motion';
 import OTPInput from 'react-otp-input';
 import { useRouter } from 'next/navigation';
+import Vehicles from './Vehicles';
 
 export default function RideSelector({
     onRouteSelected,
@@ -294,48 +294,7 @@ export default function RideSelector({
 
                     <div className="mb-6">
                         {/* <h3 className="text-sm font-semibold text-gray-700 mb-2">Select Vehicle:</h3> */}
-                        <div className="flex justify-between">
-                            <button
-                                onClick={() => setSelectedVehicle('SUV')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
-                                    selectedVehicle === 'SUV'
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-gray-100 text-gray-500 border-gray-300'
-                                }`}
-                            >
-                                <div className="flex flex-col md:flex-row items-center">
-                                    <Image width={64} height={64} src="/suv.png" className="w-8 h-8  md:mb-0 md:mr-2" alt="SUV" />
-                                    <span className="text-center md:text-left">SUV</span>
-                                </div>
-                            </button>
-                            <button
-                                onClick={() => setSelectedVehicle('Sedan')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
-                                    selectedVehicle === 'Sedan'
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-gray-100 text-gray-500 border-gray-300'
-                                }`}
-                            >
-                                <div className="flex flex-col md:flex-row items-center">
-                                    <Image width={64} height={64} src="/sedan.png" className="w-8 h-8 me-2" alt="Sedan" />
-                                    <span className="text-center md:text-left">Sedan</span>
-                                </div>
-                            </button>
-
-                            <button
-                                onClick={() => setSelectedVehicle('Hatchback')}
-                                className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
-                                    selectedVehicle === 'Hatchback'
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-gray-100 text-gray-500 border-gray-300'
-                                }`}
-                            >
-                                <div className="flex flex-col md:flex-row items-center">
-                                    <Image width={64} height={64} src="/hatchback.png" className="w-8 h-8 me-2" alt="Sedan" />
-                                    <span className="text-center md:text-left">Hatchback</span>
-                                </div>
-                            </button>
-                        </div>
+                        <Vehicles onSelect={setSelectedVehicle} selected={selectedVehicle} />
                     </div>
 
                     {activeTab === 'round-trip' && (
@@ -349,8 +308,9 @@ export default function RideSelector({
                                             : 'bg-gray-100 text-gray-500 border-gray-300'
                                     }`}
                                 >
-                                    <div className="flex flex-col md:flex-row items-center">
-                                        <span className="text-center md:text-left">4 Hour / 40 Kilometers</span>
+                                    <div className="flex flex-col md:flex-column items-center">
+                                        <span className="text-center text-xs md:text-left">4 Hour /</span>
+                                        <span className="text-center text-xs md:text-left">40 Kilometers</span>
                                     </div>
                                 </button>
                                 <button
@@ -361,8 +321,22 @@ export default function RideSelector({
                                             : 'bg-gray-100 text-gray-500 border-gray-300'
                                     }`}
                                 >
-                                    <div className="flex flex-col md:flex-row items-center">
-                                        <span className="text-center md:text-left">8 Hour / 80 Kilometers</span>
+                                    <div className="flex flex-col md:flex-column items-center">
+                                        <span className="text-center text-xs md:text-left">8 Hour /</span>
+                                        <span className="text-center text-xs md:text-left">80 Kilometers</span>
+                                    </div>
+                                </button>
+                                <button
+                                    onClick={() => setSelectedRateType(12)}
+                                    className={`flex-1 text-center py-2 rounded-md mx-1 border flex justify-center items-center ${
+                                        selectedRateType === 12
+                                            ? 'bg-black text-white border-black'
+                                            : 'bg-gray-100 text-gray-500 border-gray-300'
+                                    }`}
+                                >
+                                    <div className="flex flex-col md:flex-column items-center">
+                                        <span className="text-center text-xs md:text-left">12 Hour /</span>
+                                        <span className="text-center text-xs md:text-left">120 Kilometers</span>
                                     </div>
                                 </button>
                             </div>
