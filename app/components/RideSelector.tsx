@@ -283,7 +283,7 @@ export default function RideSelector({
                                 <input
                                     type="number"
                                     min={1}
-                                    className="bg-transparent outline-none text-sm flex-grow"
+                                    className="bg-transparent outline-none text-sm flex-grow dark:text-black"
                                     placeholder="No of days"
                                     onChange={(e) => setNoOfDays(e.target.value)}
                                 />
@@ -368,7 +368,7 @@ export default function RideSelector({
                                     // timeInputLabel="Time:"
                                     dateFormat="dd MMM yyyy"
                                     // showTimeInput
-                                    className="bg-gray-100"
+                                    className="bg-gray-100 dark:text-black"
                                     minDate={new Date()}
                                     maxDate={new Date(new Date().setDate(new Date().getDate() + 30))}
                                 />
@@ -385,7 +385,7 @@ export default function RideSelector({
                                     timeIntervals={15}
                                     timeCaption="Time"
                                     dateFormat="h:mm aa"
-                                    className="bg-gray-100"
+                                    className="bg-gray-100 dark:text-black"
                                     minTime={
                                         startDate?.toDateString() === new Date().toDateString() ? new Date() : new Date(0, 0, 0, 0, 0, 0)
                                     } // Restrict past times only for today
@@ -400,18 +400,18 @@ export default function RideSelector({
                             <div className="flex justify-around ">
                                 <div>
                                     <p className="text-xs text-gray-500">Distance</p>
-                                    <p className="text-lg md:text-xl font-bold">
+                                    <p className="text-lg md:text-xl font-bold dark:text-black">
                                         {activeTab === 'round-trip' ? Number(distance.split(' ')[0]) * 2 : Number(distance.split(' ')[0])}{' '}
                                         km
                                     </p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-500">Total Fare</p>
-                                    <p className="text-lg md:text-xl font-bold">₹{taxiFare.toFixed(2)}</p>
+                                    <p className="text-lg md:text-xl font-bold dark:text-black">₹{taxiFare.toFixed(2)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-500">Booking Fare</p>
-                                    <p className="text-lg md:text-xl font-bold">₹{bookingFare.toFixed(2)}</p>
+                                    <p className="text-lg md:text-xl font-bold dark:text-black">₹{bookingFare.toFixed(2)}</p>
                                 </div>
                             </div>
                             <p className="text-center mt-2 text-sm text-gray-500">
@@ -453,17 +453,17 @@ export default function RideSelector({
                     <div className="flex justify-around">
                         <div>
                             <p className="text-xs text-gray-500">Distance</p>
-                            <p className="text-lg md:text-xl font-bold">
+                            <p className="text-lg md:text-xl font-bold dark:text-black">
                                 {activeTab === 'round-trip' ? Number(distance.split(' ')[0]) * 2 : Number(distance.split(' ')[0])} km
                             </p>
                         </div>
                         <div>
                             <p className="text-xs text-gray-500">Total Fare</p>
-                            <p className="text-lg md:text-xl font-bold">₹{taxiFare.toFixed(2)}</p>
+                            <p className="text-lg md:text-xl font-bold dark:text-black">₹{taxiFare.toFixed(2)}</p>
                         </div>
                         <div>
                             <p className="text-xs text-gray-500">Booking Fare</p>
-                            <p className="text-lg md:text-xl font-bold">₹{bookingFare.toFixed(2)}</p>
+                            <p className="text-lg md:text-xl font-bold dark:text-black">₹{bookingFare.toFixed(2)}</p>
                         </div>
                     </div>
                     <p className="text-center mt-2 text-sm text-gray-500">
@@ -477,7 +477,7 @@ export default function RideSelector({
                         <div className="bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center">
                             <input
                                 type="text"
-                                className="bg-transparent outline-none text-sm flex-grow"
+                                className="bg-transparent outline-none text-sm flex-grow dark:text-black"
                                 placeholder="Enter your name"
                                 onChange={(e) => setName(e.target.value)}
                             />
@@ -487,10 +487,10 @@ export default function RideSelector({
                 <div className="flex items-center space-x-3 mb-4">
                     <div className="flex-1">
                         <label className="text-sm font-medium text-gray-700 mb-1 block">Phone</label>
-                        <div className="bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center">
+                        <div className="bg-gray-100 px-4 py-2 rounded-md flex justify-between items-center ">
                             <input
                                 type="number"
-                                className="bg-transparent outline-none text-sm flex-grow"
+                                className="bg-transparent outline-none text-sm flex-grow dark:text-black"
                                 placeholder="Phone number"
                                 onChange={(e) => setPhone(e.target.value)}
                             />
@@ -520,6 +520,7 @@ export default function RideSelector({
                             value={otp}
                             onChange={setOtp}
                             numInputs={4}
+                            inputType="number"
                             renderInput={(props) => (
                                 <input
                                     {...props}

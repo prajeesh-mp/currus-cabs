@@ -53,7 +53,7 @@ const GeoSuggest: React.FC<GeoSuggestProps> = ({ placeholder, onPlaceSelected })
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder={placeholder || 'Search location'}
-                className="bg-transparent outline-none text-sm flex-grow"
+                className="bg-transparent outline-none text-sm flex-grow dark:text-black"
             />
             <button
                 className="text-gray-400"

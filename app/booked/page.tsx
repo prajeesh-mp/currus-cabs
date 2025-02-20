@@ -11,7 +11,7 @@ const BookedContent = () => {
     const isSuccess = Boolean(txnId);
 
     return (
-        <section className="bg-white p-16 dark:bg-gray-900">
+        <section className="bg-white p-16 dark:bg-white">
             <div className="relative flex flex-1 flex-col items-center justify-center pb-16 pt-12">
                 {isSuccess ? <SuccessMessage txnId={txnId} /> : <FailureMessage />}
             </div>
